@@ -49,6 +49,9 @@ jobs:
         working-directory: docs
         run: npx vitepress build
 
+      - name: Build RPGJS workspace packages
+        run: pnpm build
+
       - name: Build original RPGJS browser example
         working-directory: playground/games/dash
         env:
