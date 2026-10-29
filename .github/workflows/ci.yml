@@ -35,6 +35,8 @@ jobs:
         run: pnpm install --no-frozen-lockfile  
       - name: Build
         run: pnpm build
+      - name: Build full RPG playground game
+        run: pnpm --dir playground/games/full-rpg build
       - name: Unit tests
         run: pnpm test -- --run
 
