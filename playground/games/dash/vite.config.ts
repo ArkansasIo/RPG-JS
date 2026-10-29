@@ -4,6 +4,9 @@ import startServer from "./src/server";
 import playgroundConfig from "./playground.config.json";
 
 export default defineConfig({
+  // Keep local development at the site root, but prefix production assets
+  // with the repository path used by GitHub Pages.
+  base: process.env.GITHUB_PAGES === "true" ? "/RPG-JS/browser-rpg/" : "/",
   server: {
     port: playgroundConfig.port,
     strictPort: true,
