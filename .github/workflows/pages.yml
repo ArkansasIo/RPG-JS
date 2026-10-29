@@ -1,4 +1,4 @@
-name: Deploy RPGJS documentation to GitHub Pages
+name: Deploy RPGJS documentation and browser demo to GitHub Pages
 
 on:
   push:
@@ -6,7 +6,9 @@ on:
       - v5
     paths:
       - "docs/**"
-      - "playground/games/full-rpg/**"
+      - "playground/games/dash/**"
+      - "pnpm-lock.yaml"
+      - "pnpm-workspace.yaml"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -30,32 +32,41 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
-          cache-dependency-path: docs/package-lock.json
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.1.2
+
+      - name: Install repository workspace dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Install documentation dependencies
         working-directory: docs
         run: npm ci
 
-      - name: Build VitePress site
+      - name: Build VitePress documentation
         working-directory: docs
         run: npx vitepress build
 
-      - name: Build playable full RPG game
-        working-directory: playground/games/full-rpg
-        run: |
-          npm install --no-package-lock
-          npm run build
+      - name: Build original RPGJS browser example
+        working-directory: playground/games/dash
+        env:
+          GITHUB_PAGES: "true"
+        run: pnpm build
 
-      - name: Publish game under documentation site
+      - name: Publish RPGJS browser example under documentation site
         run: |
-          mkdir -p docs/.vitepress/dist/full-rpg
-          cp -R playground/games/full-rpg/dist/. docs/.vitepress/dist/full-rpg/
+          mkdir -p docs/.vitepress/dist/browser-rpg
+          cp -R playground/games/dash/dist/. docs/.vitepress/dist/browser-rpg/
 
       - name: Verify built site entry points
         run: |
           test -s docs/.vitepress/dist/index.html
-          test -s docs/.vitepress/dist/full-rpg/index.html
+          test -s docs/.vitepress/dist/browser-rpg/index.html
+          grep -q '/RPG-JS/browser-rpg/' docs/.vitepress/dist/browser-rpg/index.html
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
