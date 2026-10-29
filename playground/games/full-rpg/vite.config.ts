@@ -1,7 +1,8 @@
 import { defineConfig } from "vite";
 import playgroundConfig from "./playground.config.json";
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
+  base: command === "build" ? "/RPG-JS/full-rpg/" : "/",
   server: {
     port: playgroundConfig.port,
     strictPort: true,
@@ -10,4 +11,4 @@ export default defineConfig({
     target: "es2022",
     sourcemap: true,
   },
-});
+}));
