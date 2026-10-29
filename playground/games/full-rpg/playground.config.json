@@ -1,0 +1,17 @@
+{
+  "id": "full-rpg",
+  "title": "Full RPG Engine",
+  "description": "Playable top-down RPG showcase with combat, enemies, quests, loot, inventory, crafting, progression, zones, and local saves.",
+  "tags": [
+    "rpg",
+    "combat",
+    "quests",
+    "inventory",
+    "crafting",
+    "save"
+  ],
+  "modes": [
+    "standalone"
+  ],
+  "port": 5189
+}
