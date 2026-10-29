@@ -164,12 +164,14 @@ function interact(): void {
       toast("Elder Rowan: The slimes are still out there. Please defeat two.");
     } else if (questStage === 2) {
       toast("Elder Rowan: Bring me two Moonleaf herbs and brew a tonic.");
-    } else {
-      toast("Elder Rowan: Greenwood is safer thanks to you. Take this 50 gold.");
+    } else if (questStage === 3) {
+      toast("Elder Rowan: Greenwood is safer thanks to you. Take this reward.");
       player.gold += 50;
       questStage = 4;
       gainXp(100);
       log("Quest reward: 100 XP and 50 gold.");
+    } else {
+      toast("Elder Rowan: Thank you for keeping Greenwood safe.");
     }
   } else if (target.kind === "enemy") {
     attack();
