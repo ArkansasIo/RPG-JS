@@ -33,6 +33,14 @@ npm install --save-dev cross-env
 npx cross-env RPG_TYPE=rpg npm run dev
 ```
 
+## Play the full RPG prototype
+
+Try the browser-based RPG systems demo with movement, combat, enemy AI, quests, loot, inventory, crafting, progression, world zones, and save/load:
+
+[Launch Full RPG Engine](https://arkansasio.github.io/RPG-JS/full-rpg/)
+
+The prototype is also available in the local playground with `pnpm playground`.
+
 ## Next steps
 
 - [Getting Started](/guide/get-started)
@@ -41,4 +49,4 @@ npx cross-env RPG_TYPE=rpg npm run dev
 - [Create hero in map](/guide/create-hero-in-map)
 - [API overview](/api)
 - [Studio overview](/studio/index)
-- [GitHub repository](https://github.com/RSamaium/RPG-JS)
+- [GitHub repository](https://github.com/ArkansasIo/RPG-JS)
