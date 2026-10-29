@@ -85,6 +85,7 @@ const tiledMenu = [{
 export default {
   //extends: baseConfig,
   title: "RPGJS v5 Documentation",
+  base: "/RPG-JS/",
   description: "Create your RPG or MMORPG in Javascript",
   ignoreDeadLinks: true,
   themeConfig: {
