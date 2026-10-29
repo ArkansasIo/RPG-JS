@@ -33,13 +33,17 @@ npm install --save-dev cross-env
 npx cross-env RPG_TYPE=rpg npm run dev
 ```
 
-## Play the full RPG prototype
+## Play the RPGJS browser example
 
-Try the browser-based RPG systems demo with movement, combat, enemy AI, quests, loot, inventory, crafting, progression, world zones, and save/load:
+Launch the original RPGJS framework example, built from the repository's `playground/games/dash` source using the native RPGJS client and server modules:
 
-[Launch Full RPG Engine](https://arkansasio.github.io/RPG-JS/full-rpg/)
+[Launch RPGJS Browser Demo](https://arkansasio.github.io/RPG-JS/browser-rpg/)
 
-The prototype is also available in the local playground with `pnpm playground`.
+To run the example locally from the repository root:
+
+```bash
+pnpm --dir playground/games/dash dev
+```
 
 ## Next steps
 
