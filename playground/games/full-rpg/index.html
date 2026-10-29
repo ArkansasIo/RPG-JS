@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b1220" />
+    <meta name="description" content="Full RPG Engine — playable RPG systems showcase." />
+    <title>Full RPG Engine</title>
+  </head>
+  <body>
+    <div id="app">
+      <header class="topbar">
+        <div class="brand"><span class="brand-mark">R</span><div><strong>RPG ENGINE</strong><small>FULL GAME SYSTEMS DEMO</small></div></div>
+        <div class="top-actions"><span id="zone-label">Greenwood</span><button id="save-btn">Save</button><button id="load-btn">Load</button><button id="reset-btn" class="subtle">Reset</button></div>
+      </header>
+      <main class="layout">
+        <section class="game-panel">
+          <canvas id="game" width="960" height="600" aria-label="Top-down RPG game world"></canvas>
+          <div class="controls-hint">WASD / arrows: move · Space: attack · E: interact · I: inventory · J: quests</div>
+          <div id="toast" class="toast" role="status"></div>
+        </section>
+        <aside class="sidebar">
+          <section class="panel hero-panel">
+            <div class="hero-heading"><div class="avatar">✦</div><div><strong id="hero-name">Wayfarer</strong><small id="hero-level">Level 1 Adventurer</small></div></div>
+            <label>Health <span id="hp-text">100 / 100</span></label><div class="meter"><span id="hp-bar" class="hp"></span></div>
+            <label>Mana <span id="mp-text">40 / 40</span></label><div class="meter"><span id="mp-bar" class="mp"></span></div>
+            <label>Experience <span id="xp-text">0 / 100 XP</span></label><div class="meter"><span id="xp-bar" class="xp"></span></div>
+            <div class="stat-grid"><div><small>Attack</small><strong id="atk-stat">12</strong></div><div><small>Defense</small><strong id="def-stat">4</strong></div><div><small>Gold</small><strong id="gold-stat">25</strong></div></div>
+          </section>
+          <section class="panel"><div class="section-heading"><h2>Adventure</h2><span class="live-dot">LIVE</span></div><div class="action-grid"><button data-action="attack">⚔ Attack <kbd>Space</kbd></button><button data-action="interact">✦ Interact <kbd>E</kbd></button><button data-action="inventory">▣ Inventory <kbd>I</kbd></button><button data-action="quests">☷ Quests <kbd>J</kbd></button><button data-action="craft">⚒ Craft</button><button data-action="map">⌖ World map</button></div></section>
+          <section class="panel"><div class="section-heading"><h2>Quest Tracker</h2><span id="quest-count">0/1</span></div><strong id="quest-title">A Quiet Clearing</strong><p id="quest-description">Speak with Elder Rowan near the old oak.</p><div class="quest-progress"><span id="quest-progress"></span></div><small id="quest-status">Active quest</small></section>
+          <section class="panel log-panel"><div class="section-heading"><h2>World Log</h2><button id="clear-log" class="text-button">Clear</button></div><ul id="log-list"><li>Welcome, adventurer. Find Elder Rowan.</li></ul></section>
+        </aside>
+      </main>
+      <div id="modal-root" class="modal-root" hidden></div>
+      <footer><span>RPG Engine · Browser prototype</span><span>Autosave: <b id="save-status">off</b></span></footer>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
