@@ -6,6 +6,7 @@ on:
       - v5
     paths:
       - "docs/**"
+      - "playground/games/full-rpg/**"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -40,8 +41,21 @@ jobs:
         working-directory: docs
         run: npx vitepress build
 
-      - name: Verify built site entry point
-        run: test -s docs/.vitepress/dist/index.html
+      - name: Build playable full RPG game
+        working-directory: playground/games/full-rpg
+        run: |
+          npm install --no-package-lock
+          npm run build
+
+      - name: Publish game under documentation site
+        run: |
+          mkdir -p docs/.vitepress/dist/full-rpg
+          cp -R playground/games/full-rpg/dist/. docs/.vitepress/dist/full-rpg/
+
+      - name: Verify built site entry points
+        run: |
+          test -s docs/.vitepress/dist/index.html
+          test -s docs/.vitepress/dist/full-rpg/index.html
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
